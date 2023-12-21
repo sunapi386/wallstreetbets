@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to WallStreetBets.Top!</title>
+    <link rel="icon" type="image/png" href="wallstreetbetstop.png"> <!-- Favicon link -->
+    <style>
+        body {
+            width: 60em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .icon {
+            height: 100px; /* Adjust as needed */
+            width: 100px; /* Adjust as needed */
+            background-image: url('wallstreetbetstop.png'); /* Replace with the path to your icon */
+            background-size: cover;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .content {
+            text-align: justify;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .step {
+            margin-top: 20px;
+        }
+        h2 {
+            color: #2E8B57;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="icon"></div>
+        <h1>Welcome to WallStreetBets.Top!</h1>
+    </header>
+    
+
+            <div class="content">
+        <p>WallStreetBets.Top is a cutting-edge platform that provides real-time insights into stock trading by analyzing the sentiment of discussions from the WallStreetBets community on Reddit.</p>
+        <h2>Sample Top WallStreetBets for Today</h2>
+    <table>
+            <tr>
+                <th>Ticker</th>
+                <th>Mentions</th>
+                <th>Sentiment Score</th>
+                <th>Daily News Summary</th>
+            </tr>
+            <tr>
+                <td>APPL</td>
+                <td>120</td>
+                <td>0.85</td>
+                <td class="news-summary">Apple's stock rose amid positive investor sentiment following a successful product launch.</td>
+            </tr>
+            <tr>
+                <td>TSLA</td>
+                <td>95</td>
+                <td>0.75</td>
+                <td class="news-summary">Tesla's shares gained traction after announcing advancements in battery technology.</td>
+            </tr>
+            <tr>
+                <td>AMZN</td>
+                <td>88</td>
+                <td>0.65</td>
+                <td class="news-summary">Amazon's market position strengthened after quarterly earnings exceeded expectations.</td>
+            </tr>
+            <tr>
+                <td>MSFT</td>
+                <td>80</td>
+                <td>0.70</td>
+                <td class="news-summary">Microsoft's sentiment improved following a major acquisition, signaling growth potential.</td>
+            </tr>
+            <tr>
+                <td>GOOGL</td>
+                <td>70</td>
+                <td>0.60</td>
+                <td class="news-summary">Google faced mixed reactions due to regulatory concerns, impacting its stock sentiment slightly.</td>
+            </tr>
+        </table>
+        <!-- Content and steps go here -->
+
+        <div class="step">
+            <h2>Fetching Posts from /r/wallstreetbets</h2>
+            <p>We use the Reddit API to fetch posts from the /r/wallstreetbets subreddit.</p>
+        </div>
+
+        <div class="step">
+            <h2>Extracting Stock Symbols</h2>
+            <p>Our system parses the fetched posts to extract mentions of stock symbols (tickers).</p>
+        </div>
+
+        <div class="step">
+            <h2>Sentiment Analysis</h2>
+            <p>Use natural language processingto analyze the sentiment of the posts mentioning each ticker, identifying the mood and trends surrounding each stock.</p>
+        </div>
+
+        <div class="step">
+            <h2>Aggregating Data</h2>
+            <p>The data is then aggregated to identify the 10 most popular stocks mentioned and calculate their average sentiment scores.</p>
+        </div>
+
+        <div class="step">
+            <h2>Result Table</h2>
+            <p>Finally, the analyzed data is presented here in a user-friendly table format, offering an insightful view into the current market sentiment.</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
