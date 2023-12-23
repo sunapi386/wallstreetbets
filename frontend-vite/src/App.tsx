@@ -1,16 +1,36 @@
-import "./App.css";
-import icon from "/wallstreetbetstop.png";
+import React from "react";
+import { MantineProvider, Container, Title, Text, Paper } from "@mantine/core";
 import TopWallStreetBetsTable from "./TopWallStreetBetsTable";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <div className="icon" style={{ backgroundImage: `url(${icon})` }}></div>
+    <MantineProvider>
+      <Container size="md" className="App">
+        <Paper>
+          <div className="icon"></div>
+          <Title order={1}>Welcome to WallStreetBets.Top!</Title>
+          <Text>
+            WallStreetBets.Top is a cutting-edge platform that provides
+            real-time insights into stock trading by analyzing the sentiment of
+            discussions from the WallStreetBets community on Reddit.
+          </Text>
 
-      <h1>Stock Sentiment Analysis</h1>
-      <TopWallStreetBetsTable />
-    </div>
+          <Title order={2}>Sample Top WallStreetBets for Today</Title>
+          <TopWallStreetBetsTable />
+
+          <Paper>
+            <Title order={3}>Fetching Posts from /r/wallstreetbets</Title>
+            <Text>
+              We use the Reddit API to fetch posts from the /r/wallstreetbets
+              subreddit.
+            </Text>
+          </Paper>
+
+          {/* Repeat for other sections */}
+        </Paper>
+      </Container>
+    </MantineProvider>
   );
-}
+};
 
 export default App;
