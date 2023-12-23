@@ -1,7 +1,7 @@
 // src/TopWallStreetBetsTable.tsx
 import React, { useState, useEffect } from "react";
 import { StockData } from "./StockData";
-import { Table } from "@mantine/core";
+import { Table, ScrollArea } from "@mantine/core";
 
 const fakeData: StockData[] = [
   {
@@ -44,27 +44,28 @@ const TopWallStreetBetsTable: React.FC = () => {
   }, []);
 
   return (
-    <Table striped highlightOnHover>
-      <thead>
-        <tr>
-          <th>Ticker</th>
-          <th>Mentions</th>
-          <th>Sentiment Score</th>
-          <th>Daily News Summary</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {stocks.map((stock, index) => (
-          <tr key={index}>
-            <td>{stock.ticker}</td>
-            <td>{stock.mentions}</td>
-            <td>{stock.sentiment.toFixed(2)}</td>
-            <td>{stock.newsSummary}</td>
+    <ScrollArea>
+      <Table striped highlightOnHover>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Mentions</th>
+            <th>Sentiment Score</th>
+            <th>Daily News Summary</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {stocks.map((stock, index) => (
+            <tr key={index}>
+              <td>{stock.ticker}</td>
+              <td>{stock.mentions}</td>
+              <td>{stock.sentiment.toFixed(2)}</td>
+              <td>{stock.newsSummary}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </ScrollArea>
   );
 };
 

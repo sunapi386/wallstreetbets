@@ -1,6 +1,7 @@
 // src/FileEmbeddingCount.tsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useQuery, gql } from "@apollo/client";
+import { Container, Title, Text, Loader, Card, Space } from "@mantine/core";
 
 const FILE_EMBEDDING_COUNT_QUERY = gql`
   {
@@ -19,17 +20,19 @@ const FileEmbeddingCount: React.FC = () => {
     pollInterval: 5000, // Poll every 5000 milliseconds (5 seconds)
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <Loader />;
+  if (error) return <Text color="red">Error: {error.message}</Text>;
 
-  // Assuming the response always has at least one FileEmbedding item
   const count = data?.Aggregate?.FileEmbedding[0]?.meta?.count;
 
   return (
-    <div>
-      <h2>File Embedding Count</h2>
-      <p>Count: {count}</p>
-    </div>
+    <Container>
+      <Card shadow="sm" padding="lg">
+        <Title order={2}>File Embedding Count</Title>
+        <Space h="md" />
+        <Text size="lg">Count: {count}</Text>
+      </Card>
+    </Container>
   );
 };
 
