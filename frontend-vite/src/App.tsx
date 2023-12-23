@@ -1,6 +1,7 @@
 import React from "react";
 import { MantineProvider, Container, Title, Text, Paper } from "@mantine/core";
 import TopWallStreetBetsTable from "./TopWallStreetBetsTable";
+import FileEmbeddingCount from "./FileEmbeddingCount";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,8 @@ const App: React.FC = () => {
 
           <Title order={2}>Sample Top WallStreetBets for Today</Title>
           <TopWallStreetBetsTable />
+
+          <FileEmbeddingCount />
 
           <Paper>
             <Title order={3}>Fetching Posts from /r/wallstreetbets</Title>
