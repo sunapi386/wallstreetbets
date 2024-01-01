@@ -8,8 +8,15 @@ import { ApolloProvider } from "@apollo/client";
 import client from "./apolloClient";
 
 const theme = createTheme({
-  /** Put your mantine theme override here */
+  // Define your color scheme
+  colors: {
+    // your custom colors
+  },
+  primaryColor: "blue", // Define primary color
+  // Customize other theme properties
 });
+
+// rest of your main.tsx code
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

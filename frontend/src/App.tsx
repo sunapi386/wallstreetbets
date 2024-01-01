@@ -5,24 +5,19 @@ import TopWallStreetBetsTable from "./TopWallStreetBetsTable";
 const App: React.FC = () => {
   return (
     <Container size="md" className="App">
-      <Paper>
+      <Paper shadow="sm">
         <Title order={1}>Welcome to WallStreetBets.Top!</Title>
-        <Text>
-          WallStreetBets.Top is a cutting-edge platform that provides real-time
-          insights into stock trading by analyzing the sentiment of discussions
-          from the WallStreetBets community on Reddit.
-        </Text>
+        <Text>WallStreetBets.Top is a cutting-edge platform...</Text>
       </Paper>
 
-      <Title order={2}>Sample Top WallStreetBets for Today</Title>
+      <Title order={2} my="lg">
+        Sample Top WallStreetBets for Today
+      </Title>
       <TopWallStreetBetsTable />
 
-      <Paper>
+      <Paper shadow="sm">
         <Title order={3}>Fetching Posts from /r/wallstreetbets</Title>
-        <Text>
-          We use the Reddit API to fetch posts from the /r/wallstreetbets
-          subreddit.
-        </Text>
+        <Text>We use the Reddit API to fetch posts...</Text>
       </Paper>
     </Container>
   );
