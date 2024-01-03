@@ -3,6 +3,8 @@ import os
 from clickhouse_driver import Client  # pip install clickhouse-driver
 from dotenv import load_dotenv
 
+from lib.post import ProcessedPost
+
 """
 CREATE USER u IDENTIFIED WITH plaintext_password BY 'pass';
 CREATE DATABASE db;
@@ -43,17 +45,17 @@ assert database, "CLICKHOUSE_DATABASE environment variable not set"
 client = Client(host=hostname, user=username, password=password, database=database)
 
 
-def insert_posts_into_clickhouse(posts):
+def insert_posts_into_clickhouse(posts: [ProcessedPost]):
     # Prepare the data for insertion
     data_to_insert = [
         (
-            post["title"],
-            post["content"],
-            post["summary"],
-            post["sentiment"],
-            post["entities"],
-            post["created_utc"],
-            post["url"],
+            post.title,
+            post.content,
+            post.summary,
+            post.sentiment,
+            post.entities,
+            post.created_utc,
+            post.url,
         )
         for post in posts
     ]
@@ -63,6 +65,7 @@ def insert_posts_into_clickhouse(posts):
         "INSERT INTO reddit_posts (title, content, summary, sentiment, entities, created_utc, url) VALUES",
         data_to_insert,
     )
+    print("Post have been inserted into ClickHouse.")
 
 
 def get_processed_posts():
@@ -72,14 +75,14 @@ def get_processed_posts():
 
 if __name__ == "__main__":
     # Example usage
-    example_post = {
-        "title": "Netflix is going down",
-        "content": "Netflix is going down, and I'm going down with it.",
-        "summary": "Netflix is going down, and I'm going down with it.",
-        "sentiment": 0.0,
-        "entities": ["NFLX"],
-        "created_utc": 1360684800,
-        "url": "https://www.reddit.com/r/wallstreetbets/comments/18ls2i6/netflix_is_going_down/",
-    }
+    example_post = ProcessedPost(
+        title="Netflix is going down",
+        content="Netflix is going down, and I'm going down with it.",
+        summary="Netflix is going down, and I'm going down with it.",
+        sentiment=0.0,
+        stocks=["NFLX"],
+        created_utc=1360684800,
+        url="https://www.reddit.com/r/wallstreetbets/comments/18ls2i6/netflix_is_going_down/",
+    )
     insert_posts_into_clickhouse([example_post])
     print(get_processed_posts())
