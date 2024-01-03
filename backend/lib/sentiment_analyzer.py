@@ -9,6 +9,10 @@ def analyze_sentiment(content):
     Analyze the sentiment of the provided content.
     Returns a sentiment score between -1 and 1, where -1 is very negative and 1 is very positive.
     """
+    # Ensure that content is a string
+    if not isinstance(content, str):
+        raise ValueError("Content for sentiment analysis must be a string")
+
     # Truncate the content to fit the model's max token limit
     max_token_limit = tokenizer.model_max_length
     tokens = tokenizer(content, truncation=True, max_length=max_token_limit, return_tensors="pt")
