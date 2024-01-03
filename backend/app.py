@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import backend.main as wsb_processor
+import main as wsb_processor
 import process_reddit_url as url_processor
 
 app = Flask(__name__)
