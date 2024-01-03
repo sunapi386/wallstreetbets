@@ -1,5 +1,4 @@
 # main.py
-import time
 
 from backend.lib.fetch_posts import fetch_new_posts
 from backend.lib.sentiment_analyzer import analyze_sentiment
@@ -26,9 +25,7 @@ def process_post(post):
 
 def get_processed_posts(subreddit):
     posts = fetch_new_posts(subreddit)
-    return [
-        process_post(post) for post in posts if post.created_utc > time.time() - 86400
-    ]
+    return [process_post(post) for post in posts]
 
 
 if __name__ == "__main__":
