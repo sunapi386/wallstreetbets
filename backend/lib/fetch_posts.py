@@ -15,6 +15,6 @@ def create_reddit_instance():
     )
 
 
-def fetch_new_posts(subreddit, limit=10):
+def fetch_new_posts(subreddit, limit=1000):
     reddit = create_reddit_instance()
     return reddit.subreddit(subreddit).new(limit=limit)

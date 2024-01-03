@@ -17,6 +17,10 @@ def summarize_text(content, max_length=130, min_length=30, length_penalty=2.0):
     if len(content) > max_token_limit:
         content = content[:max_token_limit]
 
+    # Check if content length is shorter than the minimum length
+    if len(content) < min_length:
+        return content
+
     summary = summarizer_model(
         content,
         max_length=max_length,
