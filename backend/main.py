@@ -1,7 +1,7 @@
-# process_today_wsb.py
+# main.py
 import time
 
-from fetch_posts import fetch_new_posts
+from backend.lib.fetch_posts import fetch_new_posts
 from sentiment_analyzer import analyze_sentiment
 from stock_extractor import extract_stock_symbols
 from text_summarizer import summarize_text

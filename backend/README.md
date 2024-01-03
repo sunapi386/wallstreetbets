@@ -45,6 +45,17 @@ Set up the following environment variables in a `.env` file:
 
 Ensure your ClickHouse and Weaviate instances are set up and schemas are defined. Use the provided functions to insert data into these databases.
 
+## ClickHouse
+
+ClickHouse is a column-oriented database management system (DBMS) for online analytical processing of queries (OLAP). It is capable of real-time generation of analytical data reports in response to queries of large data volumes. This stores the reddit posts and their processed data.
+
+```
+ :) CREATE USER <u> IDENTIFIED WITH plaintext_password BY <p>;
+GRANT ALL ON *.* TO <u>;
+CREATE DATABASE wallstreetbets;
+EXIT;
+```
+
 ## Notes
 
 This project is configured for /r/wallstreetbets, but can be adapted for other subreddits.
