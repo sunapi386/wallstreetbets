@@ -1,5 +1,50 @@
 {
   "python.analysis.extraPaths": ["backend"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "python.terminal.activateEnvironment": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.importFormat": "absolute",
+  "python.analysis.autoImportCompletions": true,
+  // primarily for prompt files...
+  "[plaintext]": {
+    "files.trimFinalNewlines": false,
+    "files.insertFinalNewline": false
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "[typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  }
+  // "python.analysis.inlayHints.functionReturnTypes": true,
+  // "python.analysis.inlayHints.variableTypes": true
 }

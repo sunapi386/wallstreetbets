@@ -14,9 +14,12 @@ def extract_stock_symbols(content):
     Returns a list of unique entities that might be stock symbols.
     """
     ner_results = ner_model(content)
-    potential_symbols = [
-        entity["word"] for entity in ner_results if entity["entity_group"] == "ORG"
-    ]
+    if ner_results is None:
+        return []  # Return an empty list if ner_results is None
+    potential_symbols = []
+    for entity in ner_results:
+        if entity is not None and isinstance(entity, dict) and entity.get("entity_group") == "ORG":
+            potential_symbols.append(entity.get("word"))
     return list(set(potential_symbols))  # Return unique symbols
 
 

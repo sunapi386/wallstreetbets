@@ -13,7 +13,7 @@ def summarize_text(content, max_length=130, min_length=30, length_penalty=2.0):
     - length_penalty: Penalty for shorter sentences in the summary
     """
     # Truncate the content to fit the model's max token limit
-    max_token_limit = 1024  # Adjust based on model's token limit
+    max_token_limit = 4096  # Adjust based on model's token limit
     if len(content) > max_token_limit:
         content = content[:max_token_limit]
 
@@ -24,7 +24,7 @@ def summarize_text(content, max_length=130, min_length=30, length_penalty=2.0):
         length_penalty=length_penalty,
         do_sample=False,
     )
-    return summary[0]["summary_text"]
+    return summary[0]["summary_text"] # type: ignore
 
 
 # Example usage

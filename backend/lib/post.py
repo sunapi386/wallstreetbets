@@ -1,12 +1,13 @@
-from typing import TypedDict, List
+from typing import List
 from datetime import datetime
+from pydantic import BaseModel
 
 
-class ProcessedPost(TypedDict):
+class ProcessedPost(BaseModel):
     title: str
     content: str
     summary: str
     sentiment: float
-    stocks: List[str]
+    entities: List[str]
     created_utc: datetime
     url: str

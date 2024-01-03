@@ -12,8 +12,8 @@ def analyze_sentiment(content):
     result = sentiment_analyzer(content)
     # Convert result to a score between -1 and 1
     # Assuming the model returns 'LABEL_0' for negative and 'LABEL_1' for positive sentiment
-    score = result[0]["score"]
-    if result[0]["label"] == "NEGATIVE":
+    score = result[0]["score"] # type: ignore
+    if result[0]["label"] == "NEGATIVE": # type: ignore
         score = -score
     return score
 

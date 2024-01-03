@@ -13,12 +13,12 @@ def process_post(reddit_post):
     summary = summarize_text(content)
     sentiment = analyze_sentiment(content)
     stock_symbols = extract_stock_symbols(content)
-    processed_posts = ProcessedPost(
+    processed_posts = ProcessedPost (
         title=reddit_post.title,
         content=reddit_post.selftext,
-        summary=summary,
-        sentiment=sentiment,
-        stocks=stock_symbols,
+        summary=summary, # type: ignore
+        sentiment=sentiment, # type: ignore
+        entities=stock_symbols,
         created_utc=reddit_post.created_utc,
         url=reddit_post.url,
     )

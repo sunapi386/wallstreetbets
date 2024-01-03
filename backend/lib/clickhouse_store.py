@@ -45,10 +45,9 @@ assert database, "CLICKHOUSE_DATABASE environment variable not set"
 client = Client(host=hostname, user=username, password=password, database=database)
 
 
-def insert_posts_into_clickhouse(posts: [ProcessedPost]):
+def insert_posts_into_clickhouse(post: ProcessedPost):
     # Prepare the data for insertion
-    data_to_insert = [
-        (
+    data_to_insert = [(
             post.title,
             post.content,
             post.summary,
@@ -56,9 +55,7 @@ def insert_posts_into_clickhouse(posts: [ProcessedPost]):
             post.entities,
             post.created_utc,
             post.url,
-        )
-        for post in posts
-    ]
+        )]
 
     # Insert the data
     client.execute(
@@ -80,9 +77,9 @@ if __name__ == "__main__":
         content="Netflix is going down, and I'm going down with it.",
         summary="Netflix is going down, and I'm going down with it.",
         sentiment=0.0,
-        stocks=["NFLX"],
-        created_utc=1360684800,
+        entities=["NFLX"],
+        created_utc=1360684800, # type: ignore
         url="https://www.reddit.com/r/wallstreetbets/comments/18ls2i6/netflix_is_going_down/",
     )
-    insert_posts_into_clickhouse([example_post])
+    insert_posts_into_clickhouse(example_post)
     print(get_processed_posts())

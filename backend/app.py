@@ -28,6 +28,9 @@ def process_request():
     data = request.json
 
     # Process based on the provided type in the request
+    if not data:
+        return jsonify({"success": False, "error": "No data provided"}), 400
+
     if data.get("type") == "subreddit":
         subreddit = data.get("subreddit", "wallstreetbets")
         try:
