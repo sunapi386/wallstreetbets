@@ -1,8 +1,10 @@
 from transformers import pipeline
 
+## NOTE Weaviate has a summarizer module so maybe better to replace this with that
+# https://weaviate.io/blog/solution-to-tl-drs
+
 # Initialize the summarizer model
 summarizer_model = pipeline("summarization", model="facebook/bart-large-cnn")
-
 
 def summarize_text(content, max_length=130, min_length=30, length_penalty=2.0):
     """
@@ -12,13 +14,21 @@ def summarize_text(content, max_length=130, min_length=30, length_penalty=2.0):
     - min_length: Minimum length of the summary
     - length_penalty: Penalty for shorter sentences in the summary
     """
-    # Truncate the content to fit the model's max token limit
-    max_token_limit = 4096  # Adjust based on model's token limit
-    if len(content) > max_token_limit:
-        content = content[:max_token_limit]
 
     # Check if content length is shorter than the minimum length
     if len(content) < min_length:
+        return content
+
+    # Convert max_token_limit to a character limit
+    # 1024 is a typical token limit, adjust as necessary
+    max_token_limit = 1024
+
+    # Check if input length is too long and truncate if necessary
+    if len(content[0]) > max_token_limit:
+        content = content[:, :max_token_limit]
+
+    # Check if content length is shorter than the minimum length
+    if len(content[0]) < min_length:
         return content
 
     summary = summarizer_model(
@@ -28,7 +38,8 @@ def summarize_text(content, max_length=130, min_length=30, length_penalty=2.0):
         length_penalty=length_penalty,
         do_sample=False,
     )
-    return summary[0]["summary_text"] # type: ignore
+    return summary[0]["summary_text"]  # type: ignore
+
 
 
 # Example usage
