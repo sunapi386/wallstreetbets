@@ -1,4 +1,11 @@
+import os
 import weaviate  # pip install weaviate-client
+from dotenv import load_dotenv
+
+load_dotenv()
+
+hostname = os.getenv("WEAVIATE_HOST")
+assert hostname, "WEAVIATE_HOST environment variable not set"
 
 
 def create_schema(client):
@@ -35,7 +42,7 @@ def create_schema(client):
                     },
                     {
                         "name": "created_utc",
-                        "dataType": ["dateTime"],
+                        "dataType": ["date"],
                         "description": "The creation time of the post",
                     },
                     {
@@ -72,10 +79,37 @@ def insert_posts_into_weaviate(client, posts):
         client.data_object.create(data_object=post_data, class_name="RedditPost")
 
 
-# Initialize Weaviate client
-client = weaviate.Client(
-    "http://localhost:8080"
-)  # Replace with your Weaviate instance URL
+def get_posts(client):
+    posts = client.data_object.get(class_name="RedditPost", limit=100)
+    return posts
 
-# Create schema (runs if it doesn't exist yet)
-create_schema(client)
+
+if __name__ == "__main__":
+    client = weaviate.Client(hostname)
+    create_schema(client)
+
+    posts = [
+        {
+            "title": "I love $GME",
+            "content": "I love $GME",
+            "summary": "I love $GME",
+            "sentiment": 0.9,
+            "stocks": ["GME"],
+            "created_utc": "2021-01-01T00:00:00Z",
+            "url": "https://reddit.com/r/wallstreetbets/1",
+        },
+        {
+            "title": "I love $AMC",
+            "content": "I love $AMC",
+            "summary": "I love $AMC",
+            "sentiment": 0.9,
+            "stocks": ["AMC"],
+            "created_utc": "2021-01-01T00:00:00Z",
+            "url": "https://reddit.com/r/wallstreetbets/2",
+        },
+    ]
+    insert_posts_into_weaviate(client, posts)
+    print("Inserted posts into Weaviate.")
+
+    posts = get_posts(client)
+    print(posts)

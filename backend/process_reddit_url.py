@@ -1,13 +1,12 @@
 import praw
-import re
 import os
 from dotenv import load_dotenv
 from urllib.parse import urlparse
 
 # Assuming these modules are in the same directory
-from sentiment_analyzer import analyze_sentiment
-from stock_extractor import extract_stock_symbols
-from text_summarizer import summarize_text
+from backend.lib.sentiment_analyzer import analyze_sentiment
+from backend.lib.stock_extractor import extract_stock_symbols
+from backend.lib.text_summarizer import summarize_text
 
 load_dotenv()
 

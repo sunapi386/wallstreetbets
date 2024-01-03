@@ -1,5 +1,4 @@
 # To insert the processed Reddit posts into ClickHouse
-import datetime
 import os
 from clickhouse_driver import Client  # pip install clickhouse-driver
 from dotenv import load_dotenv

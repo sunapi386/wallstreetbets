@@ -2,10 +2,10 @@
 import time
 
 from backend.lib.fetch_posts import fetch_new_posts
-from sentiment_analyzer import analyze_sentiment
-from stock_extractor import extract_stock_symbols
-from text_summarizer import summarize_text
-from clickhouse_store import insert_posts_into_clickhouse
+from backend.lib.sentiment_analyzer import analyze_sentiment
+from backend.lib.stock_extractor import extract_stock_symbols
+from backend.lib.text_summarizer import summarize_text
+from backend.lib.clickhouse_store import insert_posts_into_clickhouse
 
 
 def process_post(post):
